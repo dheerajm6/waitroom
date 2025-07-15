@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout, Button, Typography, Row, Col, Card, Space, Drawer } from 'antd';
 import { motion } from 'framer-motion';
 import { 
@@ -27,6 +27,7 @@ import {
 import ElegantWaitingRoom from './components/ElegantWaitingRoom';
 import TypewriterText from './components/TypewriterText';
 import InteractiveHowItWorks from './components/InteractiveHowItWorks';
+import WaitroomLoader from './components/WaitroomLoader';
 import './App.css';
 
 const { Header, Content, Footer } = Layout;
@@ -34,9 +35,23 @@ const { Title, Text, Paragraph } = Typography;
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoaderComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <WaitroomLoader onComplete={handleLoaderComplete} duration={3500} />;
+  }
 
   return (
-    <Layout className="layout">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <Layout className="layout">
       <Header className="header">
         <div className="header-content">
           <div className="logo">
@@ -1392,6 +1407,7 @@ function App() {
         </div>
       </Footer>
     </Layout>
+    </motion.div>
   );
 }
 
