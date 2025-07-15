@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Avatar, Tag, Tooltip } from 'antd';
+import { Avatar, Tag } from 'antd';
 import { 
   UserOutlined, 
   ClockCircleOutlined, 
@@ -28,7 +28,7 @@ interface TeamMember {
 }
 
 const ElegantWaitingRoom: React.FC = () => {
-  const [members, setMembers] = useState<TeamMember[]>([
+  const [members] = useState<TeamMember[]>([
     {
       id: '1',
       name: 'Sarah Chen',
@@ -99,12 +99,11 @@ const ElegantWaitingRoom: React.FC = () => {
       
       // Update energy level based on team status
       const workingMembers = members.filter(m => m.status === 'working').length;
-      const waitingMembers = members.filter(m => m.status === 'waiting').length;
       setEnergyLevel(Math.max(0.2, (workingMembers / members.length) * 0.8 + 0.2));
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [members.length]);
+  }, [members]);
 
   const getStatusIcon = (status: string) => {
     switch (status) {

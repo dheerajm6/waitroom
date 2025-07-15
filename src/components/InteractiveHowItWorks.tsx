@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Card, Typography, Button } from 'antd';
+import { Card, Typography } from 'antd';
 import { 
   ApiOutlined, 
   SyncOutlined, 
@@ -9,7 +9,6 @@ import {
   ClockCircleOutlined,
   UserOutlined,
   TeamOutlined,
-  DashboardOutlined,
   BellOutlined,
   BarChartOutlined,
   ThunderboltOutlined,
@@ -17,8 +16,7 @@ import {
   SlackOutlined,
   GithubOutlined,
   DeploymentUnitOutlined,
-  BugOutlined,
-  CodeOutlined
+  BugOutlined
 } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
